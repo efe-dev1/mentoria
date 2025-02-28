@@ -1,0 +1,2538 @@
+        <!DOCTYPE html>
+        <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Central de Mentoria</title>
+            <link rel="shortcut icon"
+                href="https://www.habbo.com.br/habbo-imaging/badge/b09164s43131s50134s17113s171152f871e57c21d5c38fdf1c29c23d7a3b8.gif"
+                type="image/gif">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+            <style>
+                body {
+                    font-family: 'Poppins', sans-serif;
+                    background: linear-gradient(to top, #25313a, #334e5d);
+                    background-size: 100% 150%;
+                    color: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 100vh;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    box-sizing: border-box;
+                    animation: Entrad 1.1s ease-out forwards;
+            }
+
+            body:not([data-theme]) {
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+            body[data-theme] {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            @keyframes Entrad {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+                ::-webkit-scrollbar {
+                    width: 0;
+                }
+
+                ::-webkit-scrollbar-track {
+                    background: #81a5b8;
+                } 
+
+                header {
+                    text-align: center;
+                    margin-bottom: 10px;
+                    margin-bottom: -45px;
+                }
+
+                header img {
+                    max-width: 80%;
+                    display: block;
+                    margin: -15px auto;
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                header img:hover {
+                    transform: scale(1.05); 
+                    filter: brightness(1.1);
+                }
+
+                header h1 {
+                    font-size: 24px;
+                    margin: 10px 0;
+                    text-transform: uppercase;
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+                .container {
+                    width: 100%;
+                    max-width: 800px;
+                    padding: 20px;
+                    margin: 20px auto;
+                    border-radius: 12px;
+                    color: #000;
+                    box-sizing: border-box;
+                }
+
+                #texto {
+                    font-size: 13px;
+                    line-height: 1.6;
+                    margin-top: 20px;
+                    padding: 15px;
+                    border: 2px solid #dedede;
+                    border-radius: 20px;
+                    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+                    background-color: #fff;
+                    color: #333;
+                    display: none;
+                    text-align: left;
+                    z-index: 2;
+                }
+
+                .copy-btn {
+                    font-family: 'Poppins', sans-serif;
+                    background-color: #3d5b71;
+                    color: white;
+                    padding: 5px 7px;
+                    border-radius: 8px 5px;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 9px;
+                    margin-left: 2px;
+                    margin-top: -4px;
+                    margin-bottom: 4px;
+                    transition: transform 0.3s ease;
+                }
+
+                .copy-btn.pop {
+            animation: pop 0.3s ease;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+                .copy-btn:hover {
+                    background-color: #334e5d;
+                    transform: scale(0.97);
+                }
+
+                .descricao {
+                    font-family: 'Poppins', sans-serif;
+                    font-weight: bold;
+                    color: #5b859e;
+                    font-size: 11px;
+                }
+
+                .titulo {
+                    font-weight: bold;
+                    font-size: 16px;
+                    color: #000;
+                }
+
+                #creditos {
+                    text-align: center;
+                    margin-top: 5px;
+                    font-size: 12px;
+                    color: #fff;
+                }
+
+                #creditos p {
+                    margin: 5px 0;
+                }
+
+                #creditos a {
+                    color: #fff;
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+
+                @media (max-width: 768px) and (orientation: landscape) {
+                    header img {
+                        max-width: 55%;
+                        margin: -10px auto;
+                    }
+
+                    .container {
+                        max-width: 100%;
+                        padding: 10px;
+                    }
+
+                    #texto {
+                        padding: 10px;
+                        font-size: 10px;
+                    }
+
+                    .copy-btn {
+                        font-size: 8px;
+                    }
+                }
+
+                @media (max-width: 480px) and (orientation: landscape) {
+                    header h1 {
+                        font-size: 20px;
+                    }
+
+                    header img {
+                        max-width: 45%;
+                        margin: -10px auto;
+                    }
+
+                    #texto {
+                        font-size: 10px;
+                        padding: 10px;
+                    }
+
+                    .copy-btn {
+                        font-size: 8px;
+                    }
+                }
+
+                #aviso {
+                    position: fixed;
+                    bottom: 10px;
+                    right: 70px;
+                    background-color: #f8f8ff;
+                    border: 2px solid #dedede;
+                    color: #050505;
+                    padding: 15px 20px;
+                    border-radius: 20px;
+                    max-width: 300px;
+                    font-size: 12px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                    z-index: 1000;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    animation: slideIn 0.5s ease;
+                }
+
+                #aviso button {
+                    position: absolute;
+                    top: 7px;
+                    right: 9px;
+                    background: none;
+                    border: none;
+                    color: rgb(136, 136, 136);
+                    font-weight: bold;
+                    font-size: 15px;
+                    cursor: pointer;
+                    padding: 0;
+                    z-index: 1001;
+                }
+
+                #aviso button:hover {
+                    color: rgb(174, 0, 0);
+                }
+
+                #aviso.closing {
+                    animation: slideOut 0.5s ease forwards;
+                }
+
+                @keyframes slideOut {
+                    from {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes slideIn {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+
+                .bot-link {
+                    font-family: 'Poppins', sans-serif;
+                    background-color: #81a5b8;
+                    color: white;
+                    padding: 2px 5px;
+                    border-radius: 5px;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 9px;
+                    margin-left: 2px;
+                }
+
+                .bot-link:hover {
+                    background-color: darkcyan;
+                }
+
+                .bot-link:active {
+                    background-color: darkcyan;
+                }
+
+                .custom-select {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 60px;
+                    background: #fff;
+                    border: 2px solid #dedede;
+                    border-radius: 20px 15px;
+                    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+                    padding: 0 15px;
+                    cursor: pointer;
+                }
+
+                .custom-select select {
+                    display: none;
+                }
+
+                .select-items {
+                    position: absolute;
+                    top: calc(100% + 14px);
+                    left: -1;
+                    width: 100%;
+                    background-color: #fff;
+                    border: 2px solid #dedede;
+                    border-top: none;
+                    border-radius: 20px;
+                    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+                    z-index: 10;
+                    overflow: hidden;
+                }
+
+                .select-items div {
+                    padding: 14px 25px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    transition: background-color 0.15s ease, filter 0.15s ease, color 0.15s ease;
+                }
+
+                .select-items div:hover {
+                    background-color: #d0e3ee;
+                    filter: brightness(1.1);
+                    color: #81a5b8;
+                }
+
+                .select-items img {
+                    margin-top: -10px;
+                }
+
+                .selected {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    background-color: #fff;
+                    padding: 0 10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    height: 100%;
+                    border-radius: 8px;
+                }
+
+                .desc-aula {
+                    font-size: 11px;
+                    color: #555;
+                    margin-top: 5px;
+                    padding-left: 10px;
+                    font-style: italic;
+                    display: block;
+                }
+
+                input[type="checkbox"] {
+                    position: absolute;
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                input:checked ~ .spoiler-conteudo {
+                    max-height: 100vh;
+                    padding: 1em;
+                }
+
+                input:checked ~ .spoiler-label .seta {
+                    transform: rotate(180deg);
+                }
+
+                .spoiler {
+                    margin: 10px;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.5);
+                }
+
+                .spoiler-label {
+                    display: flex;
+                    padding: 0.5em;
+                    font-weight: bold;
+                    cursor: pointer;
+                    background: #334e5d;
+                    color: #fff;
+                    border-radius: 5px;
+                    transition: background 0.3s;
+                }
+
+                .spoiler-label:active {
+                    background: #5091ab;
+                }
+
+                .spoiler-conteudo {
+                    max-height: 0;
+                    padding: 0 1em;
+                    background: white;
+                    transition: all 0.35s;
+                    transition: max-height 0.35s ease-in-out, padding 0.35s ease-in-out;
+                    overflow-y: auto;
+                }
+
+                .spoiler-conteudo::-webkit-scrollbar {
+                    width: 5px;
+                    border-radius: 5px;
+                }
+
+                .spoiler-conteudo::-webkit-scrollbar-thumb {
+                    background: rgba(0, 0, 0, 0.1);
+                    border-radius: 5px;
+                }
+
+                .spoiler-conteudo::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+
+                .spoiler-conteudo::-webkit-scrollbar-thumb:hover {
+                    background: rgba(0, 0, 0, 0.2);
+                }
+
+                .spoiler-label .seta {
+                    transition: transform 0.3s ease;
+                    margin-left: auto;
+                }
+
+                .marcado {
+                    background-color: #d3efff;
+                    transition: background 0.3s;
+                    padding: 0;
+                    border-radius: 3px;
+                }
+
+                .habbo-decoracao {
+                    position: fixed;
+                    z-index: 1;
+                    pointer-events: none;
+                    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.25));
+                    transition: all 0.5s ease;
+                }
+
+                .decor-direita {
+                    right: -280px;
+                    bottom: -40px;
+                    transform: rotate(-15deg) scaleX(-1);
+                    z-index: 999;
+                    animation: decorEnter 0.5s ease forwards;
+                }
+
+                @keyframes decorEnter {
+                    from {
+                        right: -280px;
+                        opacity: 0;
+                    }
+                    to {
+                        right: -70px;
+                        opacity: 1;
+                    }
+                }
+
+                .decor-direita.closing {
+                    animation: decorSaida 0.5s ease forwards;
+                }
+
+                @keyframes decorSaida {
+                    to {
+                        right: -280px;
+                        opacity: 0;
+                        transform: rotate(345deg) scaleX(-1);
+                    }
+                }
+
+                .btn-config {
+            position: fixed;
+            bottom: 1.75dvh;
+            left: 1.75dvw;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            border: 0.2dvh solid transparent;
+            font-size: 2.5dvh;
+            border-radius: 1.5dvh;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0.2dvh 0.2dvh 0.5dvh rgba(0, 0, 0, 0.2);
+            width: 4.5dvh;
+            height: 4.5dvh;
+            transition: background 0.8s ease;
+        }
+
+        .btn-config:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-config i {
+            transition: transform 2s ease;
+        }
+
+        .btn-config i.rotated {
+            transform: rotate(360deg);
+        }
+
+        .config-popup {
+            display: none;
+            position: fixed;
+            bottom: 70px;
+            left: 25px;
+            width: 320px;
+            height: auto;
+            background: rgba(30, 30, 30, 0.593);
+            backdrop-filter: blur(10px);
+            border-radius: 17px;
+            z-index: 1001;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.41);
+            overflow: hidden;
+        }
+
+        .config-popup.active {
+            display: block;
+            animation: fadeSlideIn 0.4s ease-out;
+        }
+
+        .config-header {
+            display: flex;
+            justify-content: center;
+            
+            align-items: center;
+            padding: 1px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .config-content {
+            padding: 15px;
+        }
+
+        .tema-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 9px;
+            margin: 6px 0;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            border: 1px solid rgba(145, 201, 209, 0.1);
+        }
+
+        .tema-item:hover {
+            background: rgba(0, 0, 0, 0.185);
+        }
+
+        .tema-item:active {
+            transform: scale(0.98);
+        }
+
+        .tema-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 7px;
+            margin-right: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tema-preview.classico {
+            background: linear-gradient(160deg, #6eb7d5, #5292ae);
+            border: 2px solid #008ca4;
+        }
+
+        .tema-preview.new {
+            background: linear-gradient(to top, #25313a, #334e5d);
+            border: 2px solid #174a54;
+        }
+
+        .tema-preview.ocean_prof {
+            background: linear-gradient(160deg, #121f28, #1e1e1e);
+            border: 2px solid #001f24;
+        }
+
+        .botao-maior .copy-btn {
+            padding: 6px 9px !important;
+            font-size: 10px !important;
+        }
+
+        .aviso-oculto {
+            display: none !important;
+        }
+
+        [data-theme="classico"], 
+        [data-theme="new"], 
+        [data-theme="ocean_prof"] {
+            header {
+                text-align: center;
+                margin-bottom: -45px;
+            }
+
+            header img {
+                max-width: 80%;
+                display: block;
+                margin: -15px auto;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            header img:hover {
+                transform: scale(1.05); 
+                filter: brightness(1.1);
+            }
+        }
+
+        [data-theme="classico"] {
+            background: linear-gradient(160deg, #6eb7d5, #5292ae);
+            color: #e0e0e0 !important;
+            background-size: 100% 150%;
+        }
+
+        [data-theme="classico"] .spoiler-label {
+            background-color: #6eb7d5;
+        }
+
+        [data-theme="classico"] .spoiler-label:active {
+            background-color: #5c98b0;
+        }
+
+        [data-theme="classico"] .copy-btn {
+            background-color: #6eb7d5;
+        }
+
+        [data-theme="classico"] .copy-btn:hover {
+            background-color: #5292ae;
+        }
+
+        [data-theme="new"] {
+            background: linear-gradient(to top, #25313a, #334e5d);
+            background-size: 100% 150%;
+        }
+
+        [data-theme="ocean_prof"] {
+            background: linear-gradient(160deg, #121f28, #1e1e1e) !important;
+            background-size: 100% 150%;
+        }
+
+        [data-theme="ocean_prof"] .spoiler-label {
+            background-color: #121f28;
+        }
+
+        [data-theme="ocean_prof"] .spoiler-label:active {
+            background-color: #1d4353;
+        }
+
+        [data-theme="ocean_prof"] .copy-btn {
+            background-color: #0e2535;
+        }
+
+        [data-theme="ocean_prof"] .copy-btn:hover {
+            background-color: #214253;
+        }
+
+        .checkbox-micro {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            pointer-events: none;
+        }
+
+        .checkbox-micro input {
+            opacity: 0;
+            position: absolute;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .checkbox-micro input {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .checkbox-micro .checkmark {
+            position: relative;
+            width: 17px;
+            height: 17px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+        }
+
+        .checkbox-micro input:checked ~ .checkmark {
+            background: #00a8c6;
+            border-color: #2ac4dc;
+            animation: checkPop 0.3s ease;
+        }
+
+        .checkbox-micro .checkmark i {
+            font-size: 14px;
+            color: white;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-micro input:checked ~ .checkmark i {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @keyframes checkPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        .theme-accordion {
+            margin-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .acessib-accordion {
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .arrow-icon {
+            transition: transform 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .theme-options {
+            max-height: 0;
+            overflow-y: auto;
+            transition: max-height 0.3s ease-out;
+            font-size: 13px;
+        }
+
+        .theme-options::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .theme-options::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .theme-options::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .acessib-options {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            font-size: 13px;
+        }
+
+        .acessib-options.open {
+            max-height: 500px;
+        }
+
+        .theme-options.open {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .arrow-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .fechar-popup {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 27px;
+            height: 27px;
+            background: transparent;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+            z-index: 2;
+        }
+
+        .fechar-popup:hover {
+            background: #ff5555bf;
+        }
+
+        .fechar-popup:active {
+            transform: scale(0.9);
+        }
+
+        .fechar-popup::after {
+            content: '×';
+            font-size: 1.4em;
+            color: white;
+        }
+
+        .timer {
+            margin-left: 10px;
+            font-size: 12px;
+            color: #64bdca;
+            transition: opacity 0.3s ease;
+        }
+
+        .tema-preview.harry-potter {
+            background: linear-gradient(135deg, 
+                #2c3e50 25%,
+                #34495e 25%, #34495e 50%,
+                #8e44ad 50%, #8e44ad 75%,
+                #2c3e50 75%
+            );
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #f1c40f;
+        }
+
+        .tema-preview.harry-potter::before {
+            content: "\f530";
+            font-size: 24px;
+            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+        }
+
+        .bandeira {
+            display: none;
+        }
+
+        [data-theme="grifinoria"] .bandeira,
+        [data-theme="corvinal"] .bandeira,
+        [data-theme="sonserina"] .bandeira,
+        [data-theme="lufa-lufa"] .bandeira {
+            z-index: -3;
+            opacity: 0.5;
+        }
+
+        [data-theme="grifinoria"] .bandeira.grifinoria1,
+        [data-theme="grifinoria"] .bandeira.grifinoria2,
+        [data-theme="grifinoria"] .bandeira.grifinoria3,
+        [data-theme="grifinoria"] .bandeira.grifinoria4 {
+            display: block;
+        }
+
+        [data-theme="grifinoria"] .bandeira.grifinoria1 { top: 10px; left: 10px; }
+        [data-theme="grifinoria"] .bandeira.grifinoria2 { top: 10px; right: 10px; }
+        [data-theme="grifinoria"] .bandeira.grifinoria3 { bottom: 10px; left: 10px; }
+        [data-theme="grifinoria"] .bandeira.grifinoria4 { bottom: 10px; right: 10px; }
+
+        [data-theme="grifinoria"] .descricao {
+            color: #bc0000;
+        }
+
+        [data-theme="grifinoria"] .bot-link {
+            background-color: #900000;
+        }
+
+        [data-theme="grifinoria"] .bot-link:hover {
+            background-color: #9b9b00;
+        }
+
+        [data-theme="grifinoria"], 
+        [data-theme="grifinoria"] body {
+            background-color: #5a0000 !important;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        [data-theme="grifinoria"] .copy-btn {
+            background-color: #700000;
+        }
+
+        [data-theme="grifinoria"] .copy-btn:hover {
+            background-color: #c1b732;
+        }
+
+        [data-theme="grifinoria"] .spoiler-label {
+            background-color: #922414;
+        }
+
+        [data-theme="grifinoria"] .spoiler-label:active {
+            background-color: #6e1a0d;
+        }
+
+        [data-theme="grifinoria"]::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #7d2323;
+            z-index: -2;
+        }
+
+        [data-theme="grifinoria"]::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, #ECB939 25%, transparent 25%),
+                linear-gradient(-45deg, #ECB939 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ECB939 75%),
+                linear-gradient(-45deg, transparent 75%, #ECB939 75%);
+            background-size: 30px 30px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        [data-theme="grifinoria"] .bandeira {
+            display: block;
+            position: fixed;
+            width: 100px;
+            height: auto;
+            z-index: 10;
+        }
+
+        [data-theme="grifinoria"] header img {
+            max-width: 45%;
+            display: block;
+            margin: -15px auto;
+            transition: transform 0.3s ease-in-out;
+            }
+
+        [data-theme="sonserina"] .bandeira.sonserina1,
+        [data-theme="sonserina"] .bandeira.sonserina2,
+        [data-theme="sonserina"] .bandeira.sonserina3,
+        [data-theme="sonserina"] .bandeira.sonserina4 {
+            display: block;
+        }
+
+        [data-theme="sonserina"] .bandeira.sonserina1 { top: 10px; left: 10px; }
+        [data-theme="sonserina"] .bandeira.sonserina2 { top: 10px; right: 10px; }
+        [data-theme="sonserina"] .bandeira.sonserina3 { bottom: 10px; left: 10px; }
+        [data-theme="sonserina"] .bandeira.sonserina4 { bottom: 10px; right: 10px; }
+
+        [data-theme="sonserina"], 
+        [data-theme="sonserina"] body {
+            background-color: #215131 !important;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        [data-theme="sonserina"] .descricao {
+            color: #206500;
+        }
+
+        [data-theme="sonserina"] .bot-link {
+            background-color: #006a15;
+        }
+
+        [data-theme="sonserina"] .bot-link:hover {
+            background-color: #00851b;
+        }
+
+        [data-theme="sonserina"] .copy-btn {
+            background-color: #2A623D;
+        }
+
+        [data-theme="sonserina"] .copy-btn:hover {
+            background-color: #1b492b;
+        }
+
+        [data-theme="sonserina"] .spoiler-label {
+            background-color: #2A623D;
+        }
+
+        [data-theme="sonserina"] .spoiler-label:active {
+            background-color: #1c4a2b;
+        }
+
+        [data-theme="sonserina"]::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d2815;
+            z-index: -2;
+        }
+
+        [data-theme="sonserina"]::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, #246439 25%, transparent 25%),
+                linear-gradient(-45deg, #246439 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #246439 75%),
+                linear-gradient(-45deg, transparent 75%, #246439 75%);
+            background-size: 30px 30px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        [data-theme="sonserina"] .bandeira {
+            display: block;
+            position: fixed;
+            width: 100px;
+            height: auto;
+            z-index: 10;
+        }
+
+        [data-theme="sonserina"] header img {
+            max-width: 45%;
+            display: block;
+            margin: -15px auto;
+            transition: transform 0.3s ease-in-out;
+            }
+
+        [data-theme="lufa-lufa"] .bandeira.lufa-lufa1,
+        [data-theme="lufa-lufa"] .bandeira.lufa-lufa2,
+        [data-theme="lufa-lufa"] .bandeira.lufa-lufa3,
+        [data-theme="lufa-lufa"] .bandeira.lufa-lufa4 {
+            display: block;
+        }
+
+        [data-theme="lufa-lufa"] .bandeira.lufa-lufa1 { top: 10px; left: 10px; }
+        [data-theme="lufa-lufa"] .bandeira.lufa-lufa2 { top: 10px; right: 10px; }
+        [data-theme="lufa-lufa"] .bandeira.lufa-lufa3 { bottom: 10px; left: 10px; }
+        [data-theme="lufa-lufa"] .bandeira.lufa-lufa4 { bottom: 10px; right: 10px; }
+
+        [data-theme="lufa-lufa"], 
+        [data-theme="lufa-lufa"] body {
+            background-color: #bd952f !important;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        [data-theme="lufa-lufa"] .descricao {
+            color: #7e9703;
+        }
+
+        [data-theme="lufa-lufa"] .bot-link {
+            background-color: #ECB939;
+        }
+
+        [data-theme="lufa-lufa"] .bot-link:hover {
+            background-color: #f6cd65;
+        }
+
+        [data-theme="lufa-lufa"] .copy-btn {
+            background-color: #ECB939;
+        }
+
+        [data-theme="lufa-lufa"] .copy-btn:hover {
+            background-color: #f6cd65;
+        }
+
+        [data-theme="lufa-lufa"] .spoiler-label {
+            background-color: #f1c860;
+        }
+
+        [data-theme="lufa-lufa"] .spoiler-label:active {
+            background-color: #9c7e33;
+        }
+
+        [data-theme="lufa-lufa"]::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #9c7a25;
+            z-index: -2;
+        }
+
+        [data-theme="lufa-lufa"]::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, #ECB939 25%, transparent 25%),
+                linear-gradient(-45deg, #ECB939 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ECB939 75%),
+                linear-gradient(-45deg, transparent 75%, #ECB939 75%);
+            background-size: 30px 30px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        [data-theme="lufa-lufa"] .bandeira {
+            display: block;
+            position: fixed;
+            width: 100px;
+            height: auto;
+            z-index: 10;
+        }
+
+        [data-theme="lufa-lufa"] header img {
+            max-width: 45%;
+            display: block;
+            margin: -15px auto;
+            transition: transform 0.3s ease-in-out;
+            }
+
+        [data-theme="corvinal"] .bandeira.corvinal1,
+        [data-theme="corvinal"] .bandeira.corvinal2,
+        [data-theme="corvinal"] .bandeira.corvinal3,
+        [data-theme="corvinal"] .bandeira.corvinal4 {
+            display: block;
+        }
+
+        [data-theme="corvinal"] .bandeira.corvinal1 { top: 10px; left: 10px; }
+        [data-theme="corvinal"] .bandeira.corvinal2 { top: 10px; right: 10px; }
+        [data-theme="corvinal"] .bandeira.corvinal3 { bottom: 10px; left: 10px; }
+        [data-theme="corvinal"] .bandeira.corvinal4 { bottom: 10px; right: 10px; }
+
+        [data-theme="corvinal"], 
+        [data-theme="corvinal"] body {
+            background-color: #1e3053 !important;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        [data-theme="corvinal"] .descricao {
+            color: #1c508c;
+        }
+
+        [data-theme="corvinal"] .bot-link {
+            background-color: #1c508c;
+        }
+
+        [data-theme="corvinal"] .bot-link:hover {
+            background-color: #236bbd;
+        }
+
+        [data-theme="corvinal"] .copy-btn {
+            background-color: #2e4087;
+        }
+
+        [data-theme="corvinal"] .copy-btn:hover {
+            background-color: #213069;
+        }
+
+        [data-theme="corvinal"] .spoiler-label {
+            background-color: #2e4087;
+        }
+
+        [data-theme="corvinal"] .spoiler-label:active {
+            background-color: #303779;
+        }
+
+        [data-theme="corvinal"]::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #152341;
+            z-index: -2;
+        }
+
+        [data-theme="corvinal"]::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, #254586 25%, transparent 25%),
+                linear-gradient(-45deg, #254586 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #254586 75%),
+                linear-gradient(-45deg, transparent 75%, #254586 75%);
+            background-size: 30px 30px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        [data-theme="corvinal"] .bandeira {
+            display: block;
+            position: fixed;
+            width: 100px;
+            height: auto;
+            z-index: 10;
+        }
+
+        [data-theme="corvinal"] header img {
+            max-width: 45%;
+            display: block;
+            margin: -15px auto;
+            transition: transform 0.3s ease-in-out;
+            }
+
+        header {
+            display: none;
+        }
+
+        [data-theme="classico"] header.classico,
+        [data-theme="new"] header.classico,
+        [data-theme="ocean_prof"] header.classico,
+        [data-theme="grifinoria"] header.grifinoria,
+        [data-theme="sonserina"] header.sonserina,
+        [data-theme="lufa-lufa"] header.lufa-lufa,
+        [data-theme="corvinal"] header.corvinal {
+            display: block;
+        }
+
+        [data-theme="lufa-lufa"] .bandeira,
+        [data-theme="corvinal"] .bandeira,
+        [data-theme="grifinoria"] .bandeira,
+        [data-theme="sonserina"] .bandeira {
+            display: none;
+        }
+
+        .hogwarts-sub-options {
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            padding-left: 20px;
+        }
+
+        [data-theme="grifinoria"] .selected {
+            background-color: #fff;
+        }
+
+        [data-theme="sonserina"] .selected {
+            background-color: #fff;
+        }
+
+        [data-theme="lufa-lufa"] .selected {
+            background-color: #fff;
+        }
+
+        [data-theme="corvinal"] .selected {
+            background-color: #fff;
+        }
+
+        .casa-theme {
+            display: none;
+        }
+
+        .default-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="grifinoria"] .default-content,
+        [data-theme="sonserina"] .default-content,
+        [data-theme="lufa-lufa"] .default-content,
+        [data-theme="corvinal"] .default-content {
+            display: none;
+        }
+
+        [data-theme="classico"] .default-content,
+        [data-theme="new"] .default-content,
+        [data-theme="ocean_prof"] .default-content {
+            display: flex !important;
+        }
+
+        [data-theme="grifinoria"] .grifinoria-content,
+        [data-theme="sonserina"] .sonserina-content,
+        [data-theme="lufa-lufa"] .lufa-lufa-content,
+        [data-theme="corvinal"] .corvinal-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme] .default-content {
+            display: none;
+        }
+
+        .selected span {
+            font-weight: 500;
+        }
+
+        [data-theme="grifinoria"] .selected span {
+            text-shadow: 0 1px 2px rgba(174,0,0,0.2);
+        }
+
+        [data-theme="sonserina"] .selected span {
+            text-shadow: 0 1px 2px rgba(42,98,61,0.2);
+        }
+
+        [data-theme="lufa-lufa"] .selected span {
+            text-shadow: 0 1px 2px rgba(236,185,57,0.2);
+        }
+
+        [data-theme="corvinal"] .selected span {
+            text-shadow: 0 1px 2px rgba(14,26,64,0.2);
+        }
+
+        [data-theme="grifinoria"],
+        [data-theme="sonserina"],
+        [data-theme="lufa-lufa"],
+        [data-theme="corvinal"] {
+            #creditos {
+                font-family: 'MedievalSharp', cursive;
+                text-align: center;
+                margin-top: 5px;
+                font-size: 13px;
+                color: #fff;
+                }
+
+            #creditos p {
+                margin: 5px 0;
+                }
+
+            #creditos a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+                }
+        }
+
+        .selected img {
+            margin-left: 10px;
+            filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.3));
+        }
+
+        #hat-quiz {
+            font-family: 'MedievalSharp', cursive;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0a0a0a;
+            border: 0.2dvh solid #2c2c2c;
+            border-radius: 1.5dvh;
+            padding: 2dvh;
+            width: 100dvw;
+            max-width: 60dvh;
+            z-index: 9999;
+            box-shadow: 0 0 2dvh rgba(0,0,0,0.5);
+        }
+
+        .hat-header {
+            font-family: 'MedievalSharp', cursive;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hat-image {
+            width: 100px;
+            filter: drop-shadow(0 0 5px #654321);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .hat-title {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 24px;
+            color: #c0a672;
+            text-shadow: 0 0 5px #654321;
+            margin: 10px 0;
+        }
+
+        .hat-question {
+            font-family: 'MedievalSharp', cursive;
+            color: #e0e0e0;
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .hat-answer {
+            font-family: 'MedievalSharp', cursive;
+            background: #1a1a1a;
+            border: 1px solid #2c2c2c;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .hat-answer:hover {
+            background: #2a2a2a;
+            border-color: #c0a672;
+        }
+
+        .answer-bullet {
+            font-family: 'MedievalSharp', cursive;
+            color: #c0a672;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .hat-result {
+            font-family: 'MedievalSharp', cursive;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .result-house {
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 0 10px currentColor;
+            margin: 15px 0;
+        }
+
+        .result-description {
+            font-family: 'MedievalSharp', cursive;
+            color: #a0a0a0;
+            font-style: italic;
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+
+        .accept-house {
+            font-family: 'MedievalSharp', cursive;
+            background: #2c2c2c;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .accept-house:hover {
+            background: #3c3c3c;
+        }
+
+        #hat-confirm {
+            font-family: 'MedievalSharp', cursive;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0a0a0a;
+            border: 2px solid #2c2c2c;
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 9999;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .confirm-title {
+            font-family: 'MedievalSharp', cursive;
+            color: #c0a672;
+            font-size: 20px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .confirm-content {
+            font-family: 'MedievalSharp', cursive;
+            text-align: center;
+        }
+
+        .confirm-house {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .confirm-options {
+            font-family: 'MedievalSharp', cursive;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .confirm-btn {
+            font-family: 'MedievalSharp', cursive;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .confirm-btn.keep {
+            background: #2A623D;
+            color: white;
+        }
+
+        .confirm-btn.change {
+            background: #AE0001;
+            color: white;
+        }
+
+        .confirm-btn:hover {
+            opacity: 0.9;
+        }
+
+        .hat-intro {
+            font-family: 'MedievalSharp', cursive;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .hat-dialogue {
+            font-family: 'MedievalSharp', cursive;
+            font-style: italic;
+            margin: 20px 0;
+            color: #c0a672;
+            font-size: 16px;
+        }
+
+        .start-quiz-btn {
+            font-family: 'MedievalSharp', cursive;
+            background: #2A623D;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .start-quiz-btn:hover {
+            opacity: 0.9;
+        }
+
+        #acessoRestrito {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .acessoRestrito-content {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: "Poppins", sans-serif;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .acessoRestrito-text {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .acessoRestrito-content i {
+            color: red;
+        }
+
+        .acessoRestrito-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .acessoRestrito-buttons button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            position: relative;
+        }
+
+        .btn-desc {
+            font-family: 'Poppins', sans-serif;
+            font-size: 9px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 2px;
+            display: block;
+        }
+
+        #btnForum {
+            background-color: #b84c4c;
+            color: white;
+        }
+
+        #btnCentral {
+            background-color: #54aeba;
+            color: white;
+        }
+
+        .acessoRestrito-buttons button:active {
+            transform: scale(0.98);
+        }
+
+        #btnCentral:hover {
+            background-color: #499aa4;
+        }
+
+        #btnForum:hover {
+            background-color: #9c3d3d;
+        }
+
+        .acessoRestrito-buttons i {
+            font-size: 10px;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 6px;
+            margin-bottom:-4px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 7px 9px;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-size: 11px;
+        }
+
+        .social-button.discord {
+            background: transparent;
+            border: 2px solid rgba(88, 101, 242, 0.7);
+        }
+
+        .social-button.discord:hover {
+            background: rgba(88, 101, 242, 0.9);
+        }
+
+        .social-button.whatsapp {
+            background: transparent;
+            border: 2px solid rgba(37, 211, 102, 0.7);
+        }
+
+        .social-button.whatsapp:hover {
+            background: rgba(37, 211, 102, 0.9);
+        }
+
+        .social-button i {
+            font-size: 11px;
+        }
+            </style>
+        </head>
+        <body>
+            <div class="habbo-decoracao decor-direita">
+                <img src="http://www.habbo.com.br/habbo-imaging/avatarimage?&user=ofranco6830&action=std&direction=3&head_direction=3&img_format=gif&gesture=sml&headonly=0&size=l" style="height: 280px;">
+            </div>
+            <div id="aviso">
+                <span><i class="fa-solid fa-fish"style="color: #81a5b8;"></i> Caso prefira aplicar a mentoria/acompanhamento
+                    manualmente, <a href="https://www.policiarcc.com/f764-men-aplicacao-manual" class="bot-link"
+                        target="_blank"><strong>CLIQUE AQUI</strong></a><br><br>
+                        <i class="fas fa-exclamation-triangle" style="color: #c7a900;"></i> Em casos de erros, contate a equipe de DEV da EFE.
+                </span>
+                <button id="f-aviso"><i class="fa-regular fa-circle-xmark"></i></button>
+            </div>
+            <header class="classico new ocean_prof">
+                <img src="https://i.imgur.com/UCAYtHe.png" alt="Logo">
+            </header>
+            <header class="grifinoria">
+                <img src="https://i.imgur.com/m6hOyz6.png">
+            </header>
+            
+            <header class="sonserina">
+                <img src="https://i.imgur.com/qtTegRV.png">
+            </header>
+            
+            <header class="lufa-lufa">
+                <img src="https://i.imgur.com/oBzQr4A.png">
+            </header>
+            
+            <header class="corvinal">
+                <img src="https://i.imgur.com/OvFf4s8.png">
+            </header>
+            <div class="container">
+                <div class="custom-select">
+                    <div class="selected">
+                        <div class="default-content">
+                            <span>Clique aqui, selecione a opção desejada e boa aplicação!</span>
+                            <img src="https://i.imgur.com/J96TQrr_d.webp?maxwidth=760&fidelity=grand" width="30">
+                        </div>
+                        <div class="grifinoria-content casa-theme">
+                            <span style="font-family: 'MedievalSharp', cursive;">Selecione a opção, demonstre coragem e boa bruxaria!</span>
+                            <img src="https://i.imgur.com/CYOk3cK_d.webp?maxwidth=760&fidelity=grand" width="30">
+                        </div>
+                        <div class="sonserina-content casa-theme">
+                            <span style="font-family: 'MedievalSharp', cursive;">Escolha sua opção com ambição e boa bruxaria!</span>
+                            <img src="https://i.imgur.com/Mw7DWMF_d.webp?maxwidth=760&fidelity=grand" width="30">
+                        </div>
+                        <div class="lufa-lufa-content casa-theme">
+                            <span style="font-family: 'MedievalSharp', cursive;">Selecione sua opção com dedicação e boa bruxaria!</span>
+                            <img src="https://i.imgur.com/QVjvUKX_d.webp?maxwidth=760&fidelity=grand" width="30">
+                        </div>
+                        <div class="corvinal-content casa-theme">
+                            <span style="font-family: 'MedievalSharp', cursive;">Escolha sua opção com sabedoria e boa bruxaria!</span>
+                            <img src="https://i.imgur.com/8jwtHrr_d.webp?maxwidth=760&fidelity=grand" width="30">
+                        </div>
+                    </div>
+                    <div class="select-items">
+                        <div data-value="MENT">
+                            <img src="https://i.imgur.com/mXNFtV0_d.webp?maxwidth=760&fidelity=grand" alt="Mentoria"
+                                width="30" style="margin-top: 2px;">
+                            Mentoria
+                            <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Curso sobre a companhia.</span>
+                        </div>
+                        <div data-value="ACOMP">
+                            <img src="https://i.imgur.com/TViRwQR.png" alt="Acompanhamento"
+                                width="32" style="margin-top: 2px;">
+                            Acompanhamento
+                            <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Script para acompanhar um professor em aula.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="texto"></div>
+            </div>
+
+            <button class="btn-config" onclick="toggleSettings()">
+                <i class="fas fa-cog"></i>
+            </button>
+            
+            <div id="config-popup" class="config-popup">
+                <div class="config-header">
+                    <h3>Configurações</h3>
+                    <button class="fechar-popup" onclick="toggleSettings()"></button>
+                </div>
+                <div class="config-content">
+                    <div class="acessib-accordion">
+                        <div class="accordion-header" onclick="toggleAcessib()">
+                            <span style="font-size: 14px;"><i class="fa-solid fa-universal-access"></i> Acessibilidade</span>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </div>
+                        <div class="acessib-options">
+                            <label class="checkbox-micro">
+                                <input type="checkbox" id="acessib-real-pro">
+                                <span class="checkmark">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                Marcação duradoura
+                            </label>
+                            <label class="checkbox-micro">
+                                <input type="checkbox" id="acessib-bot-maior">
+                                <span class="checkmark">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                Botões maiores
+                            </label>
+                            <label class="checkbox-micro">
+                                <input type="checkbox" id="acessib-ocult-avs">
+                                <span class="checkmark">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                Ocultar aviso
+                            </label>
+                        </div>
+                    </div>
+                    <div class="theme-accordion">
+                        <div class="accordion-header" onclick="toggleThemes()">
+                            <span style="font-size: 14px;"><i class="fas fa-adjust"></i> Temas</span>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </div>
+                        <div class="theme-options">
+                            <div class="tema-item" onclick="selectTheme('classico')">
+                                <div class="tema-preview classico"></div>
+                                <span>Clássico</span>
+                            </div>
+                            <div class="tema-item" onclick="selectTheme('new')">
+                                <div class="tema-preview new"></div>
+                                <span>New</span>
+                            </div>
+                            <div class="tema-item" onclick="selectTheme('ocean_prof')">
+                                <div class="tema-preview ocean_prof"></div>
+                                <span>Oceano Profundo</span>
+                            </div>
+                            <div class="tema-item" onclick="showHatQuiz()">
+                                <div class="tema-preview harry-potter"></div>
+                                <span style="font-family: 'MedievalSharp', cursive;">Hogwarts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-buttons">
+                        <a href="https://discord.gg/McvyPdzB" target="_blank" class="social-button discord">
+                            <i class="fab fa-discord"></i> Discord
+                        </a>
+                        <a href="https://chat.whatsapp.com/DdaPzbgLj6nGTldEosAldr" target="_blank" class="social-button whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        <img src="https://i.imgur.com/XNdi6aB_d.webp?maxwidth=760&fidelity=grand" class="bandeira grifinoria1">
+        <img src="https://i.imgur.com/XNdi6aB_d.webp?maxwidth=760&fidelity=grand" class="bandeira grifinoria2">
+        <img src="https://i.imgur.com/XNdi6aB_d.webp?maxwidth=760&fidelity=grand" class="bandeira grifinoria3">
+        <img src="https://i.imgur.com/XNdi6aB_d.webp?maxwidth=760&fidelity=grand" class="bandeira grifinoria4">
+
+        <img src="https://i.imgur.com/JIAYfvk_d.webp?maxwidth=760&fidelity=grand" class="bandeira sonserina1">
+        <img src="https://i.imgur.com/JIAYfvk_d.webp?maxwidth=760&fidelity=grand" class="bandeira sonserina2">
+        <img src="https://i.imgur.com/JIAYfvk_d.webp?maxwidth=760&fidelity=grand" class="bandeira sonserina3">
+        <img src="https://i.imgur.com/JIAYfvk_d.webp?maxwidth=760&fidelity=grand" class="bandeira sonserina4">
+
+        <img src="https://i.imgur.com/NdQf3VL_d.webp?maxwidth=760&fidelity=grand" class="bandeira lufa-lufa1">
+        <img src="https://i.imgur.com/NdQf3VL_d.webp?maxwidth=760&fidelity=grand" class="bandeira lufa-lufa2">
+        <img src="https://i.imgur.com/NdQf3VL_d.webp?maxwidth=760&fidelity=grand" class="bandeira lufa-lufa3">
+        <img src="https://i.imgur.com/NdQf3VL_d.webp?maxwidth=760&fidelity=grand" class="bandeira lufa-lufa4">
+
+        <img src="https://i.imgur.com/XMe12x6_d.webp?maxwidth=760&fidelity=grand" class="bandeira corvinal1">
+        <img src="https://i.imgur.com/XMe12x6_d.webp?maxwidth=760&fidelity=grand" class="bandeira corvinal2">
+        <img src="https://i.imgur.com/XMe12x6_d.webp?maxwidth=760&fidelity=grand" class="bandeira corvinal3">
+        <img src="https://i.imgur.com/XMe12x6_d.webp?maxwidth=760&fidelity=grand" class="bandeira corvinal4">
+
+            <footer id="creditos">
+                <p><i class="fas fa-code"></i> Desenvolvido por <strong><a
+                            href="https://system.policercc.com.br/membros/%2Cyouiz" target="_blank">,youiz</a></strong></p>
+                <p><i class="fas fa-lightbulb"></i> Idealizado por <strong><a
+                            href="https://system.policercc.com.br/membros/ofranco6830" target="_blank">ofranco6830</a></strong>
+                </p>
+                <p>&copy; Reservam-se os direitos a <strong>Escola de Formação de Executivos</strong>.</p>
+            </footer>
+
+            <script>
+                const scripts = {
+                    MENT: [
+                        { tipo: 'titulo', texto: "O QUE É UMA BOA APLICAÇÃO" },
+                        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Uma boa aplicação de aula é aquela em que você segue as orientações do script." },
+        { tipo: 'texto', texto: "Certifique-se de retirar as dúvidas do aluno corretamente, abordá-lo com atenção e cordialidade," },
+        { tipo: 'texto', texto: "e de postar as aulas no system e formulário de forma adequada." },
+        { tipo: 'texto', texto: "É crucial verificar suas postagens, pois erros de digitação podem ocorrer. Para corrigir" },
+        { tipo: 'texto', texto: "esses erros e não ser punido, deverá seguir a seguinte navegação no subforum:" },
+        { tipo: 'texto', texto: "[EFE] Central de Aulas > [EFE] Relatório de função > [EFE] Correção de Erros" },
+        { tipo: 'texto', texto: "Caso a postagem seja no RCC System, deverá procurar um estagiário+ para corrigir." },
+        { tipo: 'texto', texto: "Quando você faz o básico bem feito, é tudo!" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Alguma dúvida?" },
+        { tipo: 'descricao', texto: "↳ Caso não houver, prossiga." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'titulo', texto: "COMO SE DESTACAR" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Destacar-se como professor e brilhar nos holofotes da companhia nunca foi tão simples!" },
+        { tipo: 'texto', texto: "Cumprir as metas e ser o destaque da semana são ótimas formas de se sobressair." },
+        { tipo: 'texto', texto: "Mas demonstrar empatia com outros professores, ser companheiro e participar das atividades" },
+        { tipo: 'texto', texto: "da companhia faz toda a diferença!" },
+        { tipo: 'texto', texto: "A ouvidoria e os subgrupos são excelentes oportunidades para mostrar suas habilidades" },
+        { tipo: 'texto', texto: "e se conectar com todos na companhia." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'titulo', texto: "GRUPOS INTERNOS" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Dentro da companhia, contamos com três grupos internos essenciais:" },
+        { tipo: 'texto', texto: "Departamento de Repressão a Infrações, responsável pela fiscalização da companhia." },
+        { tipo: 'texto', texto: "Departamento de Marketing, responsável pela área de marketing e desenvolvimento da companhia." },
+        { tipo: 'texto', texto: "Departamento de Aplicação, responsável pela aplicação de admissão de novos membros na companhia." },
+        { tipo: 'texto', texto: "Para se inscrever em um desses grupos, acesse o tópico [EFE] Inscrições Departamentais, disponível" },
+        { tipo: 'texto', texto: "na página inicial do subfórum da companhia, ou procure um dos líderes do subgrupo que mais te" },
+        { tipo: 'texto', texto: "interessou. No tópico, você encontrará o formulário e todas as orientações" },
+        { tipo: 'texto', texto: "necessárias para efetuar sua inscrição." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'titulo', texto: "NAVEGANDO NA COMPANHIA" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "À medida que vivenciamos a companhia, é essencial conhecer um pouco de tudo sobre ela." },
+        { tipo: 'texto', texto: "Cumprir metas é sua função, mas dominar os tópicos internos e normas dos documentos é essencial." },
+        { tipo: 'texto', texto: "Certifique-se de realizar a leitura do Regimento Interno e do Código Penal Interno," },
+        { tipo: 'texto', texto: "para encontrá-los basta acessar a aba [EFE] Documentação na página inicial do nosso subfórum." },
+        { tipo: 'texto', texto: "Na Documentação, há diversas ferramentas importantes que você deve explorar, como:" },
+        { tipo: 'texto', texto: "o Acervo Histórico, as Atas de Reuniões e o Relatório de Justificativa de Meta." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'titulo', texto: "FINALIZAÇÃO" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Parabéns, você foi aprovado na mentoria e agora poderá ser promovido nos próximos" },
+        { tipo: 'texto', texto: "dias caso faça um bom trabalho e cumpra com suas metas!" },
+        { tipo: 'texto', texto: "Antes de dispensá-lo quero esclarecer que apesar da mentoria, ainda estarei a disposição" },
+        { tipo: 'texto', texto: "para auxiliá-lo no que for necessário até o final da semana." },
+        { tipo: 'texto', texto: "Você está devidamente instruído e acompanharei seu trabalho no decorrer da semana," },
+        { tipo: 'texto', texto: "quero ver você sendo o melhor professor da companhia!" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Alguma dúvida?" },
+        { tipo: 'descricao', texto: "↳ Lembre-se de printar o começo, meio e fim de aula e toda a devolutiva dada (devolutiva é toda informação que foi corrigida, orientada durante a monitoria, principalmente o FEEDBACK)" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+                        { tipo: 'descricao', texto: 'Para postar no formulário, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZXM86H877yEG57EEey2dSNXUQA5v1u5zEpkIeKpbRCzldWw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para postar nos requerimentos, <a href="https://www.policiarcc.com/h20-efe-requerimentos-de-membros" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+                        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                        { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">CONFERÊNCIA</span>' },
+                        { tipo: 'descricao', texto: 'Para conferir sua postagem, <a href="https://docs.google.com/spreadsheets/d/1eZ3hFf0XEVaVbkgviJLZWJvpIkzufH8PQlfqbkDaT5s/edit?gid=293763349#gid=293763349" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+                    ],
+                    ACOMP: [
+                        { tipo: 'titulo', texto: "[INTRODUÇÃO]" },
+                        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Saudações, professor. Sou mentor da companhia e irei acompanhar sua aula para garantir que" },
+        { tipo: 'texto', texto: "tudo esteja ocorrendo da forma correta e, ao final, fornecer um feedback sobre pontos a" },
+        { tipo: 'texto', texto: "melhorar. Alguma dúvida?" },
+        { tipo: 'descricao', texto: "↳ Caso não haja dúvidas, avise ao professor que ele pode iniciar a aplicação." },
+        { tipo: 'descricao', texto: "↳ Após o término da aula, direcione o aluno ao batalhão e retorne com o professor para ofeedback da aula." },
+        { tipo: 'descricao', texto: "↳ Não se esqueça de tirar uma printscreen agora para comprovar o acompanhamento." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'titulo', texto: "[FEEDBACK]" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Agora, irei fornecer um feedback sobre sua aplicação." },
+        { tipo: 'descricao', texto: "↳ Se a aula foi conduzida corretamente e sem observações, elogie o desempenho do professor e finalize." },
+        { tipo: 'descricao', texto: "↳ Caso haja aspectos a melhorar, use suas palavras para apontar os pontos que podem ser aperfeiçoados. Considere abordar tópicos como:" },
+        { tipo: 'descricao', texto: "• Uso de balões coloridos: Incentive o uso de cores diferentes para tornar a aplicação mais dinâmica e fácil de acompanhar." },
+        { tipo: 'descricao', texto: "• Intervalos entre balões: Reforce a importância de dar mais tempo para o aluno processar as informações." },
+        { tipo: 'descricao', texto: "• Flexibilidade: Aceitar respostas dentro do contexto, mesmo que não sejam idênticas ao script." },
+        { tipo: 'descricao', texto: "• Interação: Adote uma abordagem amigável para fortalecer o vínculo e melhorar a experiência do aluno." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'titulo', texto: "[FINALIZAÇÃO]" },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "A Escola de Formação de Executivos agradece sua dedicação diária às aulas." },
+        { tipo: 'texto', texto: "Se tiver dúvidas sobre as aplicações, estou à disposição para esclarecer e seguir com o processo." },
+        { tipo: 'texto', texto: "As informações relevantes já foram detalhadas no feedback anterior." },
+        { tipo: 'texto', texto: "Com isso, você está APROVADO no acompanhamento." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Se desejar ter outra aula acompanhada, sinta-se à vontade para me procurar ou outro mentor." },
+        { tipo: 'descricao', texto: "↳ Não esqueça de tirar uma printscreen agora para comprovar o acompanhamento." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Aguarde enquanto realizo a postagem." },
+        { tipo: 'descricao', texto: "↳ Após a postagem, siga as instruções." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'texto', texto: "Vamos retornar ao batalhão." },
+        { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+        { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+                    { tipo: 'descricao', texto: 'Para postar no formulário, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZXM86H877yEG57EEey2dSNXUQA5v1u5zEpkIeKpbRCzldWw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">CONFERÊNCIA</span>' },
+                    { tipo: 'descricao', texto: 'Para conferir sua postagem, <a href="https://docs.google.com/spreadsheets/d/1eZ3hFf0XEVaVbkgviJLZWJvpIkzufH8PQlfqbkDaT5s/edit?gid=293763349#gid=293763349" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+                    ],
+                };
+
+                const customSelect = document.querySelector('.custom-select');
+                const selected = customSelect.querySelector('.selected');
+                const selectItems = customSelect.querySelector('.select-items');
+
+                selectItems.style.display = 'none';
+
+                selected.addEventListener('click', () => {
+                    const isOpen = selectItems.style.display === 'block';
+                    selectItems.style.display = isOpen ? 'none' : 'block';
+                });
+
+                selectItems.addEventListener('click', (e) => {
+                    const option = e.target.closest('div[data-value]');
+                    if (option) {
+                        const text = option.textContent.trim().split('\n')[0];
+                        const value = option.getAttribute('data-value');
+
+                        selected.innerHTML = `
+                        <alt="${text}" width="35" style="margin-top: 3px; text-transform: uppercase;">
+                        <span style="font-weight: bold; color: #81a5b8;">${text}</span>
+                    `;
+
+                        selectItems.style.display = 'none';
+
+                        const texto = scripts[value].map(mapearCampoNaTela).join('');
+                        document.getElementById('texto').innerHTML = texto;
+                        document.getElementById('texto').style.display = "block";
+                    }
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!customSelect.contains(e.target)) {
+                        selectItems.style.display = 'none';
+                    }
+                });
+
+                function mapearCampoNaTela(item, index) {
+                    if (item.tipo === 'titulo') {
+                        return `
+                        <div class="titulo">
+                            <span>${item.texto}</span>
+                            <button class="copy-btn" onclick="copiarTexto('${item.texto}', this)">Copiar</button>
+                            <span class="timer" style="display: none;"></span>
+                        </div>
+                    `;
+                    }
+                    if (item.tipo === 'descricao') {
+                        return `
+                        <div class="descricao">
+                            ${item.texto}
+                        </div>
+                    `;
+                    }
+                    if (item.tipo === 'texto') {
+                        return `
+                        <div class="texto">
+                            <span>${item.texto}</span>
+                            <button class="copy-btn" onclick="copiarTexto('${item.texto}', this)">Copiar</button>
+                            <span class="timer" style="display: none;"></span>
+                        </div>
+                    `;
+                    }
+                    if (item.tipo === 'spoiler') {
+                        return `
+                        <div class="spoiler">
+                            <input type="checkbox" id="tab-${index}">
+                            <label class="spoiler-label" for="tab-${index}">${item.texto}</label>
+                            <div class="spoiler-conteudo">
+                                ${item.conteudo.map(mapearCampoNaTela).join('')}
+                            </div>
+                        </div>
+                        `
+                    }
+                    return '';
+                }
+
+                function copiarTexto(texto, botao) {
+            const tempInput = document.createElement("input");
+            tempInput.value = texto;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const textoElement = botao.previousElementSibling;
+            const duracao = localStorage.getItem('realcePro') === 'true' ? 30 : 15;
+            
+            if (botao.intervalo) {
+                clearInterval(botao.intervalo);
+            }
+
+            botao.textContent = `${duracao}s`;
+
+            textoElement.classList.add('marcado');
+            botao.classList.add('pop');
+
+            let tempoRestante = duracao;
+
+            botao.intervalo = setInterval(() => {
+                tempoRestante--;
+                botao.textContent = `${tempoRestante}s`;
+
+                if (tempoRestante <= 0) {
+                    clearInterval(botao.intervalo);
+                    botao.textContent = "Copiar";
+                    botao.disabled = false;
+                    textoElement.classList.remove('marcado');
+                }
+            }, 1000);
+        }
+
+                window.onload = function () {
+                    loadSettings();
+                    const floatingMessage = document.getElementById("aviso");
+                    const closeButton = document.getElementById("f-aviso");
+                    const decorElement = document.querySelector('.decor-direita');
+
+                closeButton.addEventListener("click", function () {
+                    floatingMessage.classList.add('closing');
+                    decorElement.classList.add('closing');
+
+                    floatingMessage.addEventListener('animationend', () => {
+                    floatingMessage.style.display = "none";
+                    }, { once: true });
+
+                    decorElement.addEventListener('animationend', () => {
+                    decorElement.style.display = "none";
+                    }, { once: true });
+                });
+
+                    setTimeout(() => {
+                        floatingMessage.classList.add('closing');
+                        decorElement.classList.add('closing');
+                    }, 15000);
+                };
+
+                function bloquearTeclas(event) {
+                    var teclasBloqueadas = [123, 17, 85, 80, 83, 67];
+                    if (teclasBloqueadas.indexOf(event.keyCode) !== -1 || (event.ctrlKey && (event.keyCode === 85 || event.keyCode === 80))) {
+                        event.preventDefault();
+                        return false;
+                    }
+                }
+
+                document.addEventListener("contextmenu", (e) => e.preventDefault()); 
+        document.addEventListener("keydown", (e) => {
+            if (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "s" || e.key === "S")) {
+                e.preventDefault();
+            }
+            if (e.keyCode === 123) {
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === "I") {
+            event.preventDefault();
+            alert("Opa! Acho que você não precisa disso... :D");
+            }
+          });
+
+        (function () {
+            const forumURL = "https://www.policiarcc.com/f587-efe-mentores";
+            const forumPrincipal = "https://www.policiarcc.com/forum";
+            const acessoToken = "acessoPermitido";
+
+            function getCookie(nome) {
+                return document.cookie.split('; ').find(row => row.startsWith(nome + '='))?.split('=')[1];
+            }
+
+            function setCookie(nome, valor, minutos) {
+                let expires = "";
+                if (minutos) {
+                    const data = new Date();
+                    data.setTime(data.getTime() + minutos * 60 * 1000);
+                    expires = "; expires=" + data.toUTCString();
+                }
+                document.cookie = nome + "=" + valor + "; path=/" + expires;
+            }
+
+            function deletarCookie(nome) {
+                document.cookie = nome + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+
+            function exibirAcessoRestrito() {
+                const modal = document.createElement("div");
+                modal.id = "acessoRestrito";
+                modal.innerHTML = `
+                    <div class="acessoRestrito-content">
+                        <div class="acessoRestrito-header">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <p class="acessoRestrito-text">
+                            Você acessou a Central de outro lugar.<br>
+                            Deseja ir ao subfórum de mentores?
+                        </p>
+                        <div class="acessoRestrito-buttons">
+            <button id="btnForum">
+                <i class="far fa-times-circle"></i>
+                <span class="btn-desc">Início do fórum</span>
+            </button>
+            <button id="btnCentral">
+                <i class="fas fa-check"></i>
+                <span class="btn-desc">Subfórum men</span>
+            </button>
+        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                document.getElementById("btnForum").addEventListener("click", () => {
+                    window.location.href = forumPrincipal;
+                });
+
+                document.getElementById("btnCentral").addEventListener("click", () => {
+                    window.location.href = forumURL;
+                });
+            }
+
+            if (document.referrer.includes("policiarcc.com")) {
+                setCookie(acessoToken, "true", 1);
+            }
+
+            if (getCookie(acessoToken) !== "true") {
+                exibirAcessoRestrito();
+            } else {
+                deletarCookie(acessoToken);
+            }
+        })();
+
+                document.onkeydown = bloquearTeclas;
+
+                function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'new';
+            document.body.setAttribute('data-theme', savedTheme);
+        }
+
+        function selectTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            toggleSettings();
+        }
+
+        function loadSettings() {
+            loadTheme();
+            
+            document.getElementById('acessib-real-pro').checked = localStorage.getItem('realcePro') === 'true';
+            document.getElementById('acessib-bot-maior').checked = localStorage.getItem('botoesMaiores') === 'true';
+            document.getElementById('acessib-ocult-avs').checked = localStorage.getItem('ocultarAviso') === 'true';
+            
+            if(localStorage.getItem('botoesMaiores') === 'true') document.body.classList.add('botao-maior');
+            if(localStorage.getItem('ocultarAviso') === 'true') {
+                document.getElementById('aviso').remove();
+                document.querySelector('.habbo-decoracao').remove();
+            }
+        }
+
+        document.getElementById('acessib-real-pro').addEventListener('change', (e) => {
+            localStorage.setItem('realcePro', e.target.checked);
+        });
+
+        document.getElementById('acessib-bot-maior').addEventListener('change', (e) => {
+            localStorage.setItem('botoesMaiores', e.target.checked);
+            document.body.classList.toggle('botao-maior', e.target.checked);
+        });
+
+        document.getElementById('acessib-ocult-avs').addEventListener('change', (e) => {
+            localStorage.setItem('ocultarAviso', e.target.checked);
+            document.getElementById('aviso').style.display = e.target.checked ? 'none' : 'block';
+            document.querySelector('.habbo-decoracao').style.display = e.target.checked ? 'none' : 'block';
+        });
+
+        function toggleSettings() {
+            const popup = document.getElementById('config-popup');
+            popup.classList.toggle('active');
+        }
+
+        function toggleThemes() {
+            const options = document.querySelector('.theme-options');
+            const arrow = document.querySelector('.theme-accordion .arrow-icon');
+            options.classList.toggle('open');
+            arrow.classList.toggle('rotated');
+        }
+
+        function toggleAcessib() {
+            const options = document.querySelector('.acessib-options');
+            const arrow = document.querySelector('.acessib-accordion .arrow-icon');
+            options.classList.toggle('open');
+            arrow.classList.toggle('rotated');
+        }
+        const btnConfig = document.querySelector('.btn-config i');
+
+        btnConfig.addEventListener('click', () => {
+            btnConfig.classList.toggle('rotated');
+        });
+
+        function toggleHogwartsSubThemes() {
+            const subOptions = document.querySelector('.hogwarts-sub-options');
+            subOptions.style.display = subOptions.style.display === 'block' ? 'none' : 'block';
+        }
+
+        const houses = {
+            grifinoria: {
+                name: "Grifinória",
+                color: "#AE0001",
+                animal: `<img src="https://i.imgur.com/CDEuWbj_d.webp?maxwidth=760&fidelity=grand" 
+                    style="width: 80px; height: auto; display: block; margin: 0 auto;">`
+            },
+            sonserina: {
+                name: "Sonserina", 
+                color: "#2A623D",
+                animal: `<img src="https://i.imgur.com/JVOK7xc_d.webp?maxwidth=760&fidelity=grand" style="width: 80px; height: auto; display: block; margin: 0 auto;">`
+            },
+            "lufa-lufa": {
+                name: "Lufa-Lufa",
+                color: "#FFDB00",
+                animal: `<img src="https://i.imgur.com/SSUJADN_d.webp?maxwidth=760&fidelity=grand" style="width: 80px; height: auto; display: block; margin: 0 auto;">`
+            },
+            corvinal: {
+                name: "Corvinal",
+                color: "#222F5B",
+                animal: `<img src="https://i.imgur.com/x7P3aCS_d.webp?maxwidth=760&fidelity=grand" style="width: 80px; height: auto; display: block; margin: 0 auto;">`
+            }
+        };
+
+        const quiz = [
+            {
+                pergunta: "Qual sua característica mais marcante na RCC?",
+                respostas: [
+                    { texto: "Pulso-firme", casa: "grifinoria" },
+                    { texto: "Inteligência", casa: "corvinal" },
+                    { texto: "Socializar", casa: "lufa-lufa" },
+                    { texto: "Arriscar a todo custo", casa: "sonserina" }
+                ]
+            },
+            {
+                pergunta: "Qual aspecto você priorizaria na sua carreira militar?",
+                respostas: [
+                    { texto: "Alcançar o topo a todo custo", casa: "sonserina" },
+                    { texto: "Liderança para inspirar meus companheiros", casa: "grifinoria" },
+                    { texto: "Disciplina e trabalho em equipe", casa: "lufa-lufa" },
+                    { texto: "Conhecimento e inteligência para tomar decisões precisas", casa: "corvinal" }
+                ]
+            },
+            {
+                pergunta: "Qual virtude você valoriza mais?",
+                respostas: [
+                    { texto: "Lealdade", casa: "lufa-lufa" },
+                    { texto: "Ambição", casa: "sonserina" },
+                    { texto: "Coragem", casa: "grifinoria" },
+                    { texto: "Sabedoria", casa: "corvinal" },
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let housePoints = { grifinoria:0, sonserina:0, "lufa-lufa":0, corvinal:0 };
+
+        function showHatQuiz() {
+            document.getElementById('hat-quiz')?.remove();
+            document.getElementById('hat-confirm')?.remove();
+
+            userHouse = localStorage.getItem('selectedHouse');
+
+            if(userHouse) {
+                showHouseConfirmation();
+            } else {
+                showHatIntroduction();
+            }
+            
+            currentQuestion = 0;
+            housePoints = { 
+                grifinoria: 0, 
+                sonserina: 0, 
+                "lufa-lufa": 0, 
+                corvinal: 0 
+            };
+        }
+
+        function startHouseQuiz() {
+            document.getElementById('hat-quiz').innerHTML = `
+                <div class="hat-header">
+                    <img src="https://i.imgur.com/s1TNcxS.png" class="hat-image">
+                    <div class="hat-title">O Chapéu Seletor</div>
+                </div>
+                <div id="question-container"></div>
+            `;
+            showQuestion();
+        }
+
+        function showHatIntroduction() {
+            const introHTML = `
+            <div id="hat-quiz">
+                <div class="hat-header">
+                    <img src="https://i.imgur.com/s1TNcxS.png" class="hat-image">
+                    <div class="hat-title">Chapéu Seletor</div>
+                </div>
+                <div class="hat-intro">
+                    <div class="hat-dialogue">
+                        "Hmm... interessante...<br>
+                        Vamos ver onde você se encaixa!"
+                    </div>
+                    <button onclick="startHouseQuiz()" class="start-quiz-btn">
+                        VAMOS!
+                    </button>
+                </div>
+            </div>`;
+            
+            document.body.insertAdjacentHTML('beforeend', introHTML);
+        }
+
+        function showHouseConfirmation() {
+            const house = houses[userHouse];
+            const confirmationHTML = `
+            <div id="hat-confirm">
+                <div class="hat-header">
+                    <img src="https://i.imgur.com/s1TNcxS.png" class="hat-image">
+                    <div class="confirm-title">Sua casa, bruxo.</div>
+                </div>
+                <div class="confirm-content">
+                    <div class="confirm-house" style="color: ${house.color}">
+                        ${house.name}
+                    </div>
+                    <div class="confirm-options">
+                        <button onclick="applyHouseTheme('${userHouse}')" class="confirm-btn keep">
+                            MANTER CASA
+                        </button>
+                        <button onclick="resetHouseSelection()" class="confirm-btn change">
+                            ALTERAR CASA
+                        </button>
+                    </div>
+                </div>
+            </div>`;
+            
+            document.body.insertAdjacentHTML('beforeend', confirmationHTML);
+        }
+
+        function resetHouseSelection() {
+            localStorage.removeItem('selectedHouse');
+            userHouse = null;
+            document.getElementById('hat-confirm').remove();
+            showHatQuiz();
+        }
+
+        function showQuestion() {
+            const question = quiz[currentQuestion];
+            let answersHTML = question.respostas.map((r,i) => `
+                <div class="hat-answer" onclick="selectAnswer(${i})">
+                    <div class="answer-bullet"><i class="fa-solid fa-arrow-right"></i></div>
+                    ${r.texto}
+                </div>
+            `).join('');
+
+            document.getElementById('question-container').innerHTML = `
+                <div class="hat-question">${question.pergunta}</div>
+                ${answersHTML}
+            `;
+        }
+
+        function selectAnswer(index) {
+            const selectedHouse = quiz[currentQuestion].respostas[index].casa;
+            housePoints[selectedHouse] += 2;
+            
+            const otherHouses = Object.keys(houses).filter(h => h !== selectedHouse);
+            const randomHouse = otherHouses[Math.floor(Math.random()*3)];
+            housePoints[randomHouse] += 1;
+
+            currentQuestion++;
+            
+            if(currentQuestion < quiz.length) {
+                showQuestion();
+            } else {
+                showFinalResult();
+            }
+        }
+
+        function showFinalResult() {
+            let maxPoints = Math.max(...Object.values(housePoints));
+            let selectedHouse = Object.keys(housePoints).find(h => housePoints[h] === maxPoints);
+            
+            const house = houses[selectedHouse];
+            
+            document.getElementById('hat-quiz').innerHTML = `
+                <div class="hat-result">
+                    <div class="result-house" style="color: ${house.color}">
+                        ${house.name}!
+                    </div>
+                    <div class="result-animal">${house.animal}</div>
+                    <div class="result-description">
+                        Tenho em mim os segredos de sua mente...<br>
+                        ${houseDescription[selectedHouse]}
+                    </div>
+                    <button onclick="applyHouseTheme('${selectedHouse}')" 
+                        class="accept-house">
+                        ACEITAR
+                    </button>
+                </div>
+            `;
+        }
+
+        const houseDescription = {
+            grifinoria: "Sua coragem flamejante e nobreza de espírito brilham como o fogo da Gryffindor!",
+            sonserina: "Sua ambição pura e astúcia aguçada são dignas dos maiores Sonserinos!",
+            "lufa-lufa": "Sua lealdade inabalável e coração verdadeiro fazem de você um verdadeiro Lufano!",
+            corvinal: "Sua mente brilhante e sede por conhecimento são dignas dos sábios Corvinos!"
+        };
+
+        function applyHouseTheme(house) {
+            userHouse = house;
+            localStorage.setItem('selectedHouse', house);
+            selectTheme(house);
+            document.getElementById('hat-quiz')?.remove();
+            document.getElementById('hat-confirm')?.remove();
+            toggleSettings();
+        }
+
+        let userHouse = null;
+
+        window.addEventListener('load', () => {
+            userHouse = localStorage.getItem('selectedHouse');
+        });
+
+        (function() {
+                const savedTheme = localStorage.getItem('theme') || 'new';
+                document.body.setAttribute('data-theme', savedTheme);
+            })();
+
+            </script>
+        </body>
+        </html>
